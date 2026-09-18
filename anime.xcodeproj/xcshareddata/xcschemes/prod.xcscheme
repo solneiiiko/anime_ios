@@ -16,7 +16,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "07252171304828CE006F263C"
-               BuildableName = "anime.app"
+               BuildableName = "Anime.app"
                BlueprintName = "anime"
                ReferencedContainer = "container:anime.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "07252171304828CE006F263C"
-            BuildableName = "anime.app"
+            BuildableName = "Anime.app"
             BlueprintName = "anime"
             ReferencedContainer = "container:anime.xcodeproj">
          </BuildableReference>
@@ -63,7 +63,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "07252171304828CE006F263C"
-            BuildableName = "anime.app"
+            BuildableName = "Anime.app"
             BlueprintName = "anime"
             ReferencedContainer = "container:anime.xcodeproj">
          </BuildableReference>

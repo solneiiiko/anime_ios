@@ -8,5 +8,7 @@
 // Configuration settings file format documentation can be found at:
 // https://developer.apple.com/documentation/xcode/adding-a-build-configuration-file-to-your-project
 PRODUCT_BUNDLE_IDENTIFIER = shum.oks.lab.anime
+PRODUCT_NAME = anime
+APP_DISPLAY_NAME = Anime
 
 LOGGING_ENABLED = NO
