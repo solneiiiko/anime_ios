@@ -8,6 +8,7 @@
 // Configuration settings file format documentation can be found at:
 // https://developer.apple.com/documentation/xcode/adding-a-build-configuration-file-to-your-project
 PRODUCT_BUNDLE_IDENTIFIER = shum.oks.lab.anime
+ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon-Prod
 PRODUCT_NAME = anime
 APP_DISPLAY_NAME = Anime
 
