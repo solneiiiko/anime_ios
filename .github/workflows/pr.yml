@@ -1,0 +1,42 @@
+name: iOS CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  Internal:
+    name: Internal
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Build Internal
+        run: |
+          xcodebuild \
+            -project anime.xcodeproj \
+            -scheme internal \
+            -configuration Release-Internal \
+            -destination 'generic/platform=iOS Simulator' \
+            CODE_SIGNING_ALLOWED=NO \
+            clean build
+
+  Prod:
+    name: Production
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Build Production
+        run: |
+          xcodebuild \
+            -project anime.xcodeproj \
+            -scheme prod \
+            -configuration Release-Prod \
+            -destination 'generic/platform=iOS Simulator' \
+            CODE_SIGNING_ALLOWED=NO \
+            clean build
