@@ -14,6 +14,11 @@ struct ContentView: View {
                 .imageScale(.large)
                 .foregroundStyle(.tint)
             Text("Hello, world!")
+            if AppConfig.loggingEnabled {
+                Text("Log - YES")
+            } else {
+                Text("Log - NO")
+            }
         }
         .padding()
     }
