@@ -1,17 +1,18 @@
 //
-//  animeApp.swift
+//  AnimeApp.swift
 //  anime
 //
 //  Created by Oks on 2/9/2026.
 //
 
 import SwiftUI
+import DesignSystem
 
 @main
-struct animeApp: App {
+struct AnimeApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootTabView().tint(AppColors.accent)
         }
     }
 }

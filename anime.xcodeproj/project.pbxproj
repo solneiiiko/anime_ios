@@ -6,6 +6,15 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		07E6C65D305F6DCC00CC5BFC /* SettingsFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 07E6C65C305F6DCC00CC5BFC /* SettingsFeature */; };
+		07E6C660305F6DE200CC5BFC /* FavouriteFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 07E6C65F305F6DE200CC5BFC /* FavouriteFeature */; };
+		07E6C663305F6DED00CC5BFC /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = 07E6C662305F6DED00CC5BFC /* DesignSystem */; };
+		07E6C666305F6DFB00CC5BFC /* CatalogFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 07E6C665305F6DFB00CC5BFC /* CatalogFeature */; };
+		07E6C672305F6E1000CC5BFC /* AnimeDetailsFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 07E6C673305F6E1000CC5BFC /* AnimeDetailsFeature */; };
+		07E6C675305F6E1500CC5BFC /* Navigator in Frameworks */ = {isa = PBXBuildFile; productRef = 07E6C671305F6E0500CC5BFC /* Navigator */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		07252172304828CE006F263C /* anime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = anime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +45,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07E6C663305F6DED00CC5BFC /* DesignSystem in Frameworks */,
+				07E6C666305F6DFB00CC5BFC /* CatalogFeature in Frameworks */,
+				07E6C65D305F6DCC00CC5BFC /* SettingsFeature in Frameworks */,
+				07E6C660305F6DE200CC5BFC /* FavouriteFeature in Frameworks */,
+				07E6C672305F6E1000CC5BFC /* AnimeDetailsFeature in Frameworks */,
+				07E6C675305F6E1500CC5BFC /* Navigator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +93,12 @@
 			);
 			name = anime;
 			packageProductDependencies = (
+				07E6C65C305F6DCC00CC5BFC /* SettingsFeature */,
+				07E6C65F305F6DE200CC5BFC /* FavouriteFeature */,
+				07E6C662305F6DED00CC5BFC /* DesignSystem */,
+				07E6C665305F6DFB00CC5BFC /* CatalogFeature */,
+				07E6C673305F6E1000CC5BFC /* AnimeDetailsFeature */,
+				07E6C671305F6E0500CC5BFC /* Navigator */,
 			);
 			productName = anime;
 			productReference = 07252172304828CE006F263C /* anime.app */;
@@ -107,6 +128,14 @@
 			);
 			mainGroup = 07252169304828CE006F263C;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				07E6C65B305F6DCC00CC5BFC /* XCLocalSwiftPackageReference "Modules/SettingsFeature" */,
+				07E6C65E305F6DE200CC5BFC /* XCLocalSwiftPackageReference "Modules/FavouriteFeature" */,
+				07E6C661305F6DED00CC5BFC /* XCLocalSwiftPackageReference "Modules/DesignSystem" */,
+				07E6C664305F6DFB00CC5BFC /* XCLocalSwiftPackageReference "Modules/CatalogFeature" */,
+				07E6C674305F6E1000CC5BFC /* XCLocalSwiftPackageReference "Modules/AnimeDetailsFeature" */,
+				07E6C676305F6E1500CC5BFC /* XCLocalSwiftPackageReference "Modules/Navigator" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 07252173304828CE006F263C /* Products */;
 			projectDirPath = "";
@@ -555,6 +584,60 @@
 			defaultConfigurationName = "Release-Prod";
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		07E6C65B305F6DCC00CC5BFC /* XCLocalSwiftPackageReference "Modules/SettingsFeature" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Modules/SettingsFeature;
+		};
+		07E6C65E305F6DE200CC5BFC /* XCLocalSwiftPackageReference "Modules/FavouriteFeature" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Modules/FavouriteFeature;
+		};
+		07E6C661305F6DED00CC5BFC /* XCLocalSwiftPackageReference "Modules/DesignSystem" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Modules/DesignSystem;
+		};
+		07E6C664305F6DFB00CC5BFC /* XCLocalSwiftPackageReference "Modules/CatalogFeature" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Modules/CatalogFeature;
+		};
+		07E6C674305F6E1000CC5BFC /* XCLocalSwiftPackageReference "Modules/AnimeDetailsFeature" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Modules/AnimeDetailsFeature;
+		};
+		07E6C676305F6E1500CC5BFC /* XCLocalSwiftPackageReference "Modules/Navigator" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Modules/Navigator;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		07E6C65C305F6DCC00CC5BFC /* SettingsFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SettingsFeature;
+		};
+		07E6C65F305F6DE200CC5BFC /* FavouriteFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FavouriteFeature;
+		};
+		07E6C662305F6DED00CC5BFC /* DesignSystem */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DesignSystem;
+		};
+		07E6C665305F6DFB00CC5BFC /* CatalogFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CatalogFeature;
+		};
+		07E6C671305F6E0500CC5BFC /* Navigator */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Navigator;
+		};
+		07E6C673305F6E1000CC5BFC /* AnimeDetailsFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AnimeDetailsFeature;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0725216A304828CE006F263C /* Project object */;
 }
