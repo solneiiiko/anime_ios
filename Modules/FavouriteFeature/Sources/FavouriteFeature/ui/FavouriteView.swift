@@ -6,18 +6,35 @@
 //
 
 import SwiftUI
+import DesignSystem
 
 public struct FavouriteView: View {
+    
+    private let onNavigate: (FavouriteRoute) -> Void
 
-    public init() {
-        /* Nothing to do. All right. */
+    public init(
+        onNavigate: @escaping (FavouriteRoute) -> Void,
+    ) {
+        self.onNavigate = onNavigate
     }
 
     public var body: some View {
-        Text("I'm Favourite")
+        VStack {
+            Spacer()
+            Text("I'm Favourite")
+            Spacer()
+            Button("Go to Catalog") {
+                onNavigate(.catalog)
+            }
+            .tint(AppColors.accent)
+            .buttonStyle(.borderedProminent)
+        }
+        .padding(.bottom, 32)
     }
 }
 
 #Preview {
-    FavouriteView()
+    FavouriteView(onNavigate: { _ in
+        /* Nothing to do. All right. */
+    })
 }
