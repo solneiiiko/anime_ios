@@ -16,7 +16,7 @@ import Navigator
 
 struct RootTabView: View {
     
-    @State private var router = Navigator<AppTab, Route>(selectedTab: .catalog)
+    @State private var navigator = Navigator<AppTab, Route>(selectedTab: .catalog)
     
     // TODO get from ViewModel
     private let topNavButtons: [TopNavButton<AppTab>] = [
@@ -38,14 +38,14 @@ struct RootTabView: View {
     ]
     
     var body: some View {
-        TabView(selection: $router.selectedTab) {
+        TabView(selection: $navigator.selectedTab) {
             ForEach(topNavButtons) { button in
                 Tab(
                     button.title,
                     systemImage: button.icon,
                     value: button.id,
                 ) {
-                    NavigationStack(path: router.navPath(tab: button.id)) {
+                    NavigationStack(path: navigator.navPath(tab: button.id)) {
                         rootView(tab: button.id)
                         .navigationDestination(for: Route.self) { route in
                             destinationView(route: route)
@@ -62,14 +62,14 @@ struct RootTabView: View {
         case .catalog:
             CatalogView(
                 onNavigate: { route in
-                    router.navigate(route: .catalogRoute(route: route))
+                    navigator.navigate(route: .catalogRoute(route: route))
                 }
             )
         case .favourites:
             FavouriteView(
                 onNavigate: { route in
                     if route == .catalog {
-                        router.navigate(tab: AppTab.catalog)
+                        navigator.navigate(tab: AppTab.catalog)
                     }
                 }
             )
