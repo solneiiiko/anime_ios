@@ -17,23 +17,34 @@ public struct SettingsView: View {
         )
     }
     
-    public init() {
-        // Nothing to do. All right.
+    private let onNavigate: (SettingsRoute) -> Void
+
+    public init(
+        onNavigate: @escaping (SettingsRoute) -> Void
+    ) {
+        self.onNavigate = onNavigate
     }
 
     public var body: some View {
         List {
             ForEach(settings) { setting in
-                NavigationLink {
-                    SettingCardView(id: setting.id)
-                } label: {
-                    SettingItemView(item: setting)
-                }
+                SettingItemView(item: setting)
+                    .onTapGesture {
+                        onNavigate(
+                            .internalDestination(
+                                SettingsRoute.Destination(
+                                    route: .settingCard(id: setting.id)
+                                )
+                            )
+                        )
+                    }
             }
         }
     }
 }
 
 #Preview {
-    SettingsView()
+    SettingsView(onNavigate: { _ in
+        /* Nothing to do. All right. */
+    })
 }

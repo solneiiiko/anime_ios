@@ -7,8 +7,10 @@
 
 import CatalogFeature
 import FavouriteFeature
+import SettingsFeature
 
 enum Route : Hashable {
     case catalogRoute(route: CatalogRoute)
     case favouriteRoute(route: FavouriteRoute)
+    case settingsRoute(route: SettingsRoute)
 }

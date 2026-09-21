@@ -7,9 +7,16 @@
 
 import SwiftUI
 
-public enum AppImages: String {
-    case placeholder = "Placeholder"
-    case error = "Error"
-
-    public var image: Image { Image(rawValue, bundle: .module) }
+public enum AppImages {
+    case placeholder
+    case error
+    
+    public var image: Image {
+        switch self {
+        case .placeholder:
+            Image(.placeholder)
+        case .error:
+            Image(.error)
+        }
+    }
 }

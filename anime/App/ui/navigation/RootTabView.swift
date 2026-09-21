@@ -74,7 +74,11 @@ struct RootTabView: View {
                 }
             )
         case .more:
-            SettingsView()
+            SettingsView(
+                onNavigate: { route in
+                    navigator.navigate(route: .settingsRoute(route: route))
+                }
+            )
         }
     }
     
@@ -91,6 +95,11 @@ struct RootTabView: View {
             case .catalog:
                 // TODO prod -> empty view && internal -> crash
                 EmptyView()
+            }
+        case .settingsRoute(let settingsRoute):
+            switch settingsRoute {
+            case .internalDestination(let destination):
+                destination.destinationView()
             }
         }
     }
