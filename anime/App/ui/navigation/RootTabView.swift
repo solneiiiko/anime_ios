@@ -16,7 +16,7 @@ import Navigator
 
 struct RootTabView: View {
     
-    @State private var router = Router<AppTab, Route>(selectedTab: .catalog)
+    @State private var router = Navigator<AppTab, Route>(selectedTab: .catalog)
     
     // TODO get from ViewModel
     private let topNavButtons: [TopNavButton<AppTab>] = [
