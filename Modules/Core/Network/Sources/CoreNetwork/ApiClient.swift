@@ -8,7 +8,7 @@ public struct ApiClient: Sendable {
 
     public init(
         baseURL: URL,
-        session: URLSession = .shared,
+        session: URLSession,
     ) {
         self.baseURL = baseURL
         self.session = session

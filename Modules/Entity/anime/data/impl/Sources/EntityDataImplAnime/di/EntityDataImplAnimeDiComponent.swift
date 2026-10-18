@@ -14,9 +14,14 @@ public final class EntityDataImplAnimeDiComponent: DiComponent, EntityDataImplAn
     }
     
     private static func makeDataSource() -> AnimeRemoteDataSource {
-        AnimeRemoteDataSource(
-            apiClient: ApiClient(
-                baseURL: URL(string: "https://jikan.lucashdo.com")! // TODO in dependencies
+        let configuration = URLSessionConfiguration.default
+        configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
+        configuration.urlCache = nil
+
+        return AnimeRemoteDataSource(
+            apiClient: ApiClient( // TODO in dependencies
+                baseURL: URL(string: "https://jikan.lucashdo.com")!,
+                session: URLSession(configuration: configuration),
             )
         )
     }
