@@ -1,10 +1,3 @@
-//
-//  RootTabView.swift
-//  anime
-//
-//  Created by Oks on 19/9/2026.
-//
-
 import SwiftUI
 import CatalogFeature
 import AnimeDetailsFeature
@@ -16,7 +9,7 @@ import Navigator
 
 struct RootTabView: View {
     
-    @State private var navigator = Navigator<AppTab, Route>(selectedTab: .catalog)
+    @Bindable private var navigator: Navigator<AppTab, Route>
     
     // TODO get from ViewModel
     private let topNavButtons: [TopNavButton<AppTab>] = [
@@ -36,6 +29,10 @@ struct RootTabView: View {
             icon: AppIcons.more.systemImage
         ),
     ]
+    
+    init(navigator: Navigator<AppTab, Route>) {
+        self.navigator = navigator
+    }
     
     var body: some View {
         TabView(selection: $navigator.selectedTab) {
@@ -60,11 +57,7 @@ struct RootTabView: View {
     private func rootView(tab: AppTab) -> some View {
         switch tab {
         case .catalog:
-            CatalogView(
-                onNavigate: { route in
-                    navigator.navigate(route: .catalogRoute(route: route))
-                }
-            )
+            CatalogEntryView()
         case .favourites:
             FavouriteView(
                 onNavigate: { route in
@@ -106,5 +99,5 @@ struct RootTabView: View {
 }
 
 #Preview {
-    RootTabView()
+    RootTabView(navigator: Navigator<AppTab, Route>(selectedTab: .favourites))
 }

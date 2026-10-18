@@ -7,12 +7,21 @@
 
 import SwiftUI
 import DesignSystem
+import Navigator
 
 @main
 struct AnimeApp: App {
+    
+    @State private var navigator: Navigator<AppTab, Route>
+    
+    init() {
+        navigator = Navigator<AppTab, Route>(selectedTab: .catalog)
+        AppDI.initialize(navigator: navigator)
+    }
+    
     var body: some Scene {
         WindowGroup {
-            RootTabView().tint(AppColors.accent)
+            RootTabView(navigator: navigator).tint(AppColors.accent)
         }
     }
 }
