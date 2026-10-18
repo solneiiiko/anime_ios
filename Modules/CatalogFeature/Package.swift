@@ -17,6 +17,10 @@ let package = Package(
     dependencies: [
         .package(path: "../DesignSystem"),
         .package(path: "../Core/Di"),
+        .package(path: "../Core/MVI"),
+        .package(path: "../Core/Domain"),
+        .package(path: "../Core/Presentation"),
+        .package(path: "../Entity/anime/domain/api"),
     ],
     targets: [
         .target(
@@ -24,6 +28,13 @@ let package = Package(
             dependencies: [
                 .product(name: "DesignSystem", package: "DesignSystem"),
                 .product(name: "CoreDI", package: "Di"),
+                .product(name: "CoreMVI", package: "MVI"),
+                .product(name: "CoreDomain", package: "Domain"),
+                .product(name: "CorePresentation", package: "Presentation"),
+                .product(name: "EntityDomainApiAnime", package: "api"),
+            ],
+            resources: [
+                .process("Resources")
             ]
         ),
     ],
