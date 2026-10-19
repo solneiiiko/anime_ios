@@ -10,33 +10,13 @@ struct CatalogItemView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            AsyncImage(url: URL(string: item.imageUrl ?? "")) { phase in
-                switch phase {
-                case .empty:
-                    AppImages.placeholder.image
-                        .resizable()
-                        .scaledToFill()
-                        .shimmer()
-                case .success(let image):
-                    image
-                        .resizable()
-                        .scaledToFill()
-
-                case .failure:
-                    AppImages.placeholder.image
-                        .resizable()
-                        .scaledToFill()
-
-                @unknown default:
-                    EmptyView()
-                }
-            }
-            .frame(maxWidth: .infinity)
-            .frame(height: 240)
-            .clipped()
-            .clipShape(
-                RoundedRectangle(cornerRadius: 16)
-            )
+            imageView
+                .frame(maxWidth: .infinity)
+                .frame(height: 240)
+                .clipped()
+                .clipShape(
+                    RoundedRectangle(cornerRadius: 16)
+                )
 
             VStack(alignment: .leading, spacing: 2) {
                 Text(item.title)
@@ -52,6 +32,37 @@ struct CatalogItemView: View {
             .frame(alignment: .topLeading)
         }
         .frame(maxWidth: .infinity, alignment: .top)
+    }
+
+    @ViewBuilder
+    private var imageView: some View {
+        if let imageUrl = item.imageUrl,
+           let url = URL(string: imageUrl) {
+            AsyncImage(url: url) { phase in
+                switch phase {
+                case .empty:
+                    AppImages.placeholder.image
+                        .resizable()
+                        .scaledToFill()
+                        .shimmer()
+                case .success(let image):
+                    image
+                        .resizable()
+                        .scaledToFill()
+
+                case .failure:
+                    AppImages.placeholder.image
+                        .resizable()
+                        .scaledToFill()
+                @unknown default:
+                    EmptyView()
+                }
+            }
+        } else {
+            AppImages.placeholder.image
+                .resizable()
+                .scaledToFill()
+        }
     }
 }
 
