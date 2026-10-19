@@ -1,7 +1,7 @@
 
-public typealias ApiResult<Value> = Result<Value, ApiException>
+public typealias ApiResult<Value: Sendable> = Result<Value, ApiException>
 
-public enum ApiException: Error {
+public enum ApiException: Error, Sendable {
 
     case network(
         message: String
@@ -29,7 +29,7 @@ public enum ApiException: Error {
         message: String
     )
     
-    public enum ClientCode {
+    public enum ClientCode: Sendable {
         case badRequest
         case unauthorized
         case forbidden

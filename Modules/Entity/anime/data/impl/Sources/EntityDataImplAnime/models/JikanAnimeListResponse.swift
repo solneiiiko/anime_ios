@@ -1,6 +1,6 @@
 import Foundation
 
-struct JikanAnimeListResponse: Decodable {
+struct JikanAnimeListResponse: Decodable, Sendable {
     let list: [JikanAnimeResponse]
     let meta: JikanMetaResponse
 

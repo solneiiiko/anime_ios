@@ -15,6 +15,7 @@
         07E6C675305F6E1500CC5BFC /* Navigator in Frameworks */ = {isa = PBXBuildFile; productRef = 07E6C671305F6E0500CC5BFC /* Navigator */; };
         07E6C682305F6E2000CC5BF2 /* EntityDomainApiAnime in Frameworks */ = {isa = PBXBuildFile; productRef = 07E6C681305F6E2000CC5BF1 /* EntityDomainApiAnime */; };
         07E6C692305F6E2000CC5BF4 /* EntityDataImplAnime in Frameworks */ = {isa = PBXBuildFile; productRef = 07E6C691305F6E2000CC5BF2 /* EntityDataImplAnime */; };
+        07E6C6A1305F6E2000CC5BF6 /* CoreNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = 07E6C6A2305F6E2000CC5BF7 /* CoreNetwork */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */

@@ -1,6 +1,6 @@
 import Foundation
 
-struct JikanAnimeResponse: Decodable {
+struct JikanAnimeResponse: Decodable, Sendable {
     let id: Int
     let title: String
     let imageUrl: String?

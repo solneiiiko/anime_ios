@@ -14,7 +14,7 @@ public struct ApiClient: Sendable {
         self.session = session
     }
     
-    public func execute<Response: Decodable>(
+    public func execute<Response: Decodable & Sendable>(
         path: String,
     ) async -> ApiResult<Response> {
         let url = baseURL.appending(path: path)
@@ -22,7 +22,7 @@ public struct ApiClient: Sendable {
         return await execute(request)
     }
 
-    private func execute<Response : Decodable>(
+    private func execute<Response: Decodable & Sendable>(
         _ request: URLRequest,
     ) async -> ApiResult<Response> {
         do {

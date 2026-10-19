@@ -1,5 +1,5 @@
 import Foundation
 
-struct JikanMetaResponse: Decodable {
+struct JikanMetaResponse: Decodable, Sendable {
     let pagination: JikanPaginationResponse
 }
