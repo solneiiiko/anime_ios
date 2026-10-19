@@ -15,16 +15,16 @@ public struct AppNumberFormatter {
     }
 
     public func formatCommon(_ value: Int) -> String {
-        let absoluteValue = abs(Int64(value))
+        let magnitude = value.magnitude
 
-        if absoluteValue >= 1_000_000 {
+        if magnitude >= 1_000_000 {
             return formatCompact(
                 Double(value) / 1_000_000,
                 suffix: "M"
             )
         }
 
-        if absoluteValue >= 10_000 {
+        if magnitude >= 10_000 {
             return formatCompact(
                 Double(value) / 1_000,
                 suffix: "K"
