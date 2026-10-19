@@ -43,12 +43,6 @@ final class AppComponent {
         )
     }
 
-    private var animeDetailsDependencies: AnimeDetailsDependencies {
-        AnimeDetailsDependencies(
-            animeRepository: animeDataComponent.animeRepository
-        )
-    }
-
     private func makeApiClient() -> ApiClient {
         let configuration = URLSessionConfiguration.default
         configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
