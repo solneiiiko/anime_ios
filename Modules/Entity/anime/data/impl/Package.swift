@@ -17,7 +17,6 @@ let package = Package(
     dependencies: [
         .package(path: "../../domain/api"),
         .package(path: "../../../../Core/Network"),
-        .package(path: "../../../../Core/Di"),
         .package(path: "../../../../Core/Domain"),
         .package(path: "../../../../Core/Repository"),
     ],
@@ -27,7 +26,6 @@ let package = Package(
             dependencies: [
                 .product(name: "EntityDomainApiAnime", package: "api"),
                 .product(name: "CoreNetwork", package: "Network"),
-                .product(name: "CoreDI", package: "Di"),
                 .product(name: "CoreDomain", package: "Domain"),
                 .product(name: "CoreRepository", package: "Repository"),
             ]
