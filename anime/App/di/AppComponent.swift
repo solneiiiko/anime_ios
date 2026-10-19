@@ -26,9 +26,8 @@ final class AppComponent {
             )
         },
         makeAnimeDetailsView: { [unowned self] id in
-            AnimeDetailsEntryView(
+            AnimeDetailsView(
                 id: id,
-                dependencies: self.animeDetailsDependencies
             )
         }
     )

@@ -16,7 +16,7 @@ final class RootCoordinator {
     init(
         navigator: Navigator<AppTab, Route>,
         makeCatalogView: @escaping () -> CatalogEntryView,
-        makeAnimeDetailsView: @escaping (Int) -> AnimeDetailsEntryView
+        makeAnimeDetailsView: @escaping (Int) -> AnimeDetailsView,
     ) {
         self.navigator = navigator
         self.makeCatalogView = makeCatalogView
