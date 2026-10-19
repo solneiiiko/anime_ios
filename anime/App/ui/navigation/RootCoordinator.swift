@@ -11,7 +11,7 @@ final class RootCoordinator {
     let navigator: Navigator<AppTab, Route>
 
     private let makeCatalogView: () -> CatalogEntryView
-    private let makeAnimeDetailsView: (Int) -> AnimeDetailsEntryView
+    private let makeAnimeDetailsView: (Int) -> AnimeDetailsView
 
     init(
         navigator: Navigator<AppTab, Route>,
