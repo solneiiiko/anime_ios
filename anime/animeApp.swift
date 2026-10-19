@@ -1,18 +1,17 @@
-//
-//  AnimeApp.swift
-//  anime
-//
-//  Created by Oks on 2/9/2026.
-//
-
 import SwiftUI
 import DesignSystem
 
 @main
 struct AnimeApp: App {
+
+    private var appComponent = AppComponent()
+
     var body: some Scene {
         WindowGroup {
-            RootTabView().tint(AppColors.accent)
+            RootTabView(
+                coordinator: appComponent.rootCoordinator
+            ).tint(AppColors.accent)
         }
     }
 }
+

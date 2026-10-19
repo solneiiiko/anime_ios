@@ -1,58 +1,60 @@
-//
-//  CatalogView.swift
-//  CatalogFeature
-//
-//  Created by Oks on 19/9/2026.
-//
-
 import SwiftUI
+import DesignSystem
 
-public struct CatalogView: View {
+struct CatalogView: View {
     
-    private let catalogItems: [CatalogItem] = (1...100).map { index in
-        CatalogItem(
-            id: CatalogItem.Id.anime(animeId: index),
-            title: "CatalogItem \(index)",
-            subtitle: "Subtitle for Item \(index)",
-        )
+    private let viewModel: CatalogViewModel
+
+    init(_ viewModel: CatalogViewModel) {
+        self.viewModel = viewModel
     }
-    
-    private let onNavigate: (CatalogRoute) -> Void
-    
-    public init(
-        onNavigate: @escaping (CatalogRoute) -> Void,
-    ) {
-        self.onNavigate = onNavigate
-    }
-    
-    public var body: some View {
-        ScrollView {
-            LazyVGrid(columns: [GridItem(.adaptive(minimum: 150))], spacing: 16
-            ) {
-                ForEach(catalogItems) { item in
-                    CatalogItemView(
-                        item: item,
-                    )
-                    .onTapGesture {
-                        switch item.id {
-                        case .anime(let animeId):
-                            onNavigate(.animeDetails(id: animeId))
+
+    var body: some View {
+        Group {
+            switch viewModel.state {
+            case .loading:
+                CatalogSkeletonView()
+            case .content(let items):
+                ScrollView {
+                    LazyVGrid(
+                        columns: Array(
+                            repeating: GridItem(.flexible(), spacing: 16),
+                            count: 2
+                        ),
+                        alignment: .leading,
+                        spacing: 16,
+                    ) {
+                        ForEach(items) { item in
+                            Button {
+                                viewModel.send(.itemClick(item.id))
+                            } label: {
+                                CatalogItemView(item: item)
+                            }
+                            .buttonStyle(.plain)
                         }
                     }
+                    .padding(
+                        .horizontal, 16,
+                    )
+                    .padding(
+                        .vertical, 8,
+                    )
                 }
+            case .failed(let error):
+                FullScreenErrorView(
+                    title: error.title,
+                    subtitle: error.subtitle,
+                    button: ButtonInfo(
+                        title: Strings.retryButton,
+                        action: {
+                            viewModel.send(.retryClick)
+                        }
+                    )
+                )
             }
-            .padding(
-                .horizontal, 16,
-            )
-            .padding(
-                .vertical, 8
-            )
+        }
+        .onAppear {
+            viewModel.send(.onAppear)
         }
     }
-}
-
-#Preview {
-    CatalogView(onNavigate: { _ in
-        /* Nothing to do. All right. */
-    })
 }

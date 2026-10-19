@@ -1,23 +1,13 @@
-//
-//  RootTabView.swift
-//  anime
-//
-//  Created by Oks on 19/9/2026.
-//
-
 import SwiftUI
-import CatalogFeature
-import AnimeDetailsFeature
-import FavouriteFeature
-import SettingsFeature
 import DesignSystem
 import Navigator
 
 
 struct RootTabView: View {
-    
-    @State private var navigator = Navigator<AppTab, Route>(selectedTab: .catalog)
-    
+
+    private let coordinator: RootCoordinator
+    @Bindable private var navigator: Navigator<AppTab, Route>
+
     // TODO get from ViewModel
     private let topNavButtons: [TopNavButton<AppTab>] = [
         TopNavButton(
@@ -36,7 +26,14 @@ struct RootTabView: View {
             icon: AppIcons.more.systemImage
         ),
     ]
-    
+
+    init(
+        coordinator: RootCoordinator,
+    ) {
+        self.coordinator = coordinator
+        self.navigator = coordinator.navigator
+    }
+
     var body: some View {
         TabView(selection: $navigator.selectedTab) {
             ForEach(topNavButtons) { button in
@@ -46,65 +43,20 @@ struct RootTabView: View {
                     value: button.id,
                 ) {
                     NavigationStack(path: navigator.navPath(tab: button.id)) {
-                        rootView(tab: button.id)
+                        coordinator.rootView(for: button.id)
                         .navigationDestination(for: Route.self) { route in
-                            destinationView(route: route)
+                            coordinator.destinationView(for: route)
                         }
                     }
                 }
             }
         }
     }
-    
-    @ViewBuilder
-    private func rootView(tab: AppTab) -> some View {
-        switch tab {
-        case .catalog:
-            CatalogView(
-                onNavigate: { route in
-                    navigator.navigate(route: .catalogRoute(route: route))
-                }
-            )
-        case .favourites:
-            FavouriteView(
-                onNavigate: { route in
-                    if route == .catalog {
-                        navigator.navigate(tab: AppTab.catalog)
-                    }
-                }
-            )
-        case .more:
-            SettingsView(
-                onNavigate: { route in
-                    navigator.navigate(route: .settingsRoute(route: route))
-                }
-            )
-        }
-    }
-    
-    @ViewBuilder
-    private func destinationView(route: Route) -> some View {
-        switch route {
-        case .catalogRoute(let catalogRoute):
-            switch catalogRoute {
-            case .animeDetails(let animeId):
-                AnimeDetailsView(id: animeId)
-            }
-        case .favouriteRoute(let favouriteRoute):
-            switch favouriteRoute {
-            case .catalog:
-                // TODO prod -> empty view && internal -> crash
-                EmptyView()
-            }
-        case .settingsRoute(let settingsRoute):
-            switch settingsRoute {
-            case .internalDestination(let destination):
-                destination.destinationView()
-            }
-        }
-    }
 }
 
 #Preview {
-    RootTabView()
+    let appComponent = AppComponent()
+    RootTabView(
+        coordinator: appComponent.rootCoordinator
+    )
 }

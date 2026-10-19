@@ -9,7 +9,6 @@ let package = Package(
         .iOS(.v18)
     ],
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "CatalogFeature",
             targets: ["CatalogFeature"]
@@ -17,14 +16,23 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../DesignSystem"),
+        .package(path: "../Core/MVI"),
+        .package(path: "../Core/Domain"),
+        .package(path: "../Core/Presentation"),
+        .package(path: "../Entity/anime/domain/api"),
     ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "CatalogFeature",
             dependencies: [
                 .product(name: "DesignSystem", package: "DesignSystem"),
+                .product(name: "CoreMVI", package: "MVI"),
+                .product(name: "CoreDomain", package: "Domain"),
+                .product(name: "CorePresentation", package: "Presentation"),
+                .product(name: "EntityDomainApiAnime", package: "api"),
+            ],
+            resources: [
+                .process("Resources")
             ]
         ),
     ],
