@@ -1,28 +1,18 @@
 import Foundation
 import CoreNetwork
-import CoreDI
 import EntityDomainApiAnime
 
-public final class EntityDataImplAnimeDiComponent: DiComponent, EntityDataImplAnimeApi {
+public final class EntityDataImplAnimeDiComponent {
 
-    public typealias DEPENDENCIES = EntityDataImplAnimeDependencies
-
-    public let animeRepository: AnimeRepository
+    private let dependencies: EntityDataImplAnimeDependencies
 
     public init(dependencies: EntityDataImplAnimeDependencies) {
-        self.animeRepository = AnimeRepositoryImpl(dataSource: EntityDataImplAnimeDiComponent.makeDataSource())
+        self.dependencies = dependencies
     }
-    
-    private static func makeDataSource() -> AnimeRemoteDataSource {
-        let configuration = URLSessionConfiguration.default
-        configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
-        configuration.urlCache = nil
 
-        return AnimeRemoteDataSource(
-            apiClient: ApiClient( // TODO in dependencies
-                baseURL: URL(string: "https://jikan.lucashdo.com")!,
-                session: URLSession(configuration: configuration),
-            )
+    public lazy var animeRepository: AnimeRepository = AnimeRepositoryImpl(
+        dataSource: AnimeRemoteDataSource(
+            apiClient: dependencies.apiClient
         )
-    }
+    )
 }

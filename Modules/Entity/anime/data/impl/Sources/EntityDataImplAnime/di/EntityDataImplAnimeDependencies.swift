@@ -1,5 +1,13 @@
 import Foundation
+import CoreNetwork
 
-public protocol EntityDataImplAnimeDependencies {
-    
+public struct EntityDataImplAnimeDependencies {
+
+    public let apiClient: ApiClient
+
+    public init(
+        apiClient: ApiClient
+    ) {
+        self.apiClient = apiClient
+    }
 }

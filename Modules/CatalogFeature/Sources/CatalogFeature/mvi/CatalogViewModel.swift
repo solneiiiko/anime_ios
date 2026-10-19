@@ -1,4 +1,5 @@
 import Foundation
+import Observation
 import CoreMVI
 import CoreDomain
 import CorePresentation

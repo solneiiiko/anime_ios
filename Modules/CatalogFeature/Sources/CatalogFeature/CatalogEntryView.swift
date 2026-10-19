@@ -5,20 +5,15 @@ public struct CatalogEntryView: View {
     @State
     private var component: CatalogDiComponent
 
-    public init() {
+    public init(dependencies: CatalogDependencies) {
         _component = State(
-            initialValue:
-                CatalogDiComponentFactory.createComponent()
+            initialValue: CatalogDiComponent(
+                dependencies: dependencies
+            )
         )
     }
 
     public var body: some View {
-        component
-            .makeRootView()
-        // TODO check idea
-//            .environment(
-//                \.catalogDiComponent,
-//                component
-//            )
+        component.makeRootView()
     }
 }

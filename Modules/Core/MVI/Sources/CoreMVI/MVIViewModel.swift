@@ -1,4 +1,5 @@
 import Foundation
+import Observation
 
 @MainActor
 public protocol MVIViewModel: AnyObject, Observable {

@@ -1,8 +1,16 @@
 import Foundation
 import EntityDomainApiAnime
 
-public protocol CatalogDependencies {
+public struct CatalogDependencies {
 
-    var onNavigate: (CatalogRoute) -> Void { get }
-    var animeRepository: AnimeRepository { get }
+    public let animeRepository: AnimeRepository
+    public let onNavigate: (CatalogRoute) -> Void
+
+    public init(
+        animeRepository: AnimeRepository,
+        onNavigate: @escaping (CatalogRoute) -> Void
+    ) {
+        self.animeRepository = animeRepository
+        self.onNavigate = onNavigate
+    }
 }
